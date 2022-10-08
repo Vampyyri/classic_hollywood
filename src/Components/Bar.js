@@ -8,10 +8,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
 export default function ButtonAppBar() {
+    console.log("ButtonAppBar")
     return (
-        <Box sx={{ flexGrow: 1 }}>
+        <Box sx={{ flexGrow: 1 }} >
             <AppBar position="static">
-                <Toolbar>
+                <Toolbar >
                     <IconButton
                         size="large"
                         edge="start"
@@ -24,7 +25,7 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
                         Classic Hollywood
                     </Typography>
-                    <Button color="#64748B">Login</Button>
+                    <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
         </Box>
