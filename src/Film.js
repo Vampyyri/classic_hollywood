@@ -15,9 +15,15 @@ function Film(p) {
     console.log("props: ", p)
     console.log("props leffa: ", p.leffa)
     return (
-        <div><ButtonAppBar /></div>
+        <div>
+            <ButtonAppBar />
+            <br></br>
+            {p.leffa}
+        </div>
     )
     return (
+
+
 
         <div>{p.leffa}</div>
 
