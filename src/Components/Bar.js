@@ -6,12 +6,15 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { createTheme } from '@material-ui/core/styles';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+//import blueGrey from '@mui/core/colors/blueGrey';
 
 export default function ButtonAppBar() {
     console.log("ButtonAppBar")
     return (
-        <Box sx={{ flexGrow: 1 }} >
-            <AppBar position="static">
+        <Box sx={{ flexGrow: 1 }} maxWidth='1300px' alignItems="center" justify="center">
+            <AppBar position="static" color='grey'>
                 <Toolbar >
                     <IconButton
                         size="large"
