@@ -81,10 +81,10 @@ function Films() {
     }));
 
     function valinta(elokuva) {
-        setValittuLeffa(elokuva)
+        // setValittuLeffa(elokuva)
         console.log("ValittuLeffa: ", valittuLeffa)
         console.log("elokuva: ", elokuva)
-        // window.location.href = "film"
+        window.location.href = 'film=' + elokuva
         //return elokuva
     }
 
