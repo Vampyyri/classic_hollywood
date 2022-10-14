@@ -11,14 +11,19 @@ import MenuIcon from '@mui/icons-material/Menu';
 
 
 function Film(p) {
+    /*function location() {
+        window.location.href = "film"
+    }*/
+
     console.log("ollan Filmessa")
     console.log("props: ", p)
-    console.log("props leffa: ", p.leffa)
+    console.log("props leffa: ", p.leffa.name)
     return (
         <div>
             <ButtonAppBar />
             <br></br>
             {p.leffa}
+
         </div>
     )
     return (
