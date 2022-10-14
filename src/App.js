@@ -58,21 +58,41 @@ function App() {
         <Button key="three">Game</Button>,
     ];
 
+    function leffan_nimi() {
+        let film_osoitteessa = window.location.pathname.searchParams.get('film')
+        console.log(film_osoitteessa)
+        let turha = /%20/
+        let elokuvan_nimi = film_osoitteessa.replace(turha, ' ')
+        console.log(elokuvan_nimi)
+        return elokuvan_nimi
+    }
+
     useEffect(() => {
         console.log("window.location.pathname: ", window.location.pathname)
+        console.log((window.location.pathname.startsWith('/film=')))
         if (window.location.pathname == '/films') {
             console.log("films")
             setAlkutila(1)
             console.log("alkutila: ", alkutila)
-            console.log("valittuLeffa: ", Films.valittuLeffa)
-        } else if (window.location.pathname == '/film') {
+            // console.log("valittuLeffa: ", Films.valittuLeffa)
+        } else if (window.location.pathname.startsWith('/film=')) {
             console.log("film")
-            console.log("valittuLeffa: ", Films.valittuLeffa)
-            console.log("valinta: ", Films.valinta)
+            //console.log("valittuLeffa: ", Films.valittuLeffa)
+            //console.log("valinta: ", Films.valinta)
             setAlkutila(4)
+            console.log(window.location.pathname)
             console.log("alkutila: ", alkutila)
         }
+        console.log("alkutila: ", alkutila)
     })
+    /*
+    useEffect(() => {
+        if (window.location.pathname.startsWith('film')) {
+            console.log("Se onnistui!")
+            leffan_nimi()
+        }
+    }
+    */
 
 
     if (alkutila === 0) {
@@ -106,16 +126,16 @@ function App() {
             </React.Fragment></div>
 
         )
-    } else if (alkutila != 0) {
+    } else if (alkutila === 1) {
         // else if (alkutila === 1) {
         return (
             <Films />
         )
-    } /*else if (alkutila === 4) {
+    } else if (alkutila === 4) {
         return (
-            <Film leffa={Films.valinta} />
+            <Film leffa={leffan_nimi()} />
         )
-    }*/
+    }
 }
 export default App;
 
