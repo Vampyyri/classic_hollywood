@@ -59,10 +59,22 @@ function App() {
     ];
 
     function leffan_nimi() {
-        let film_osoitteessa = window.location.pathname.searchParams.get('film')
+        let film_osoitteessa = window.location.pathname.split("=")[1]
+        //window.location.pathname.searchParams.get('film')
         console.log(film_osoitteessa)
-        let turha = /%20/
-        let elokuvan_nimi = film_osoitteessa.replace(turha, ' ')
+
+
+
+
+        let elokuvan_nimi = 0
+        while (film_osoitteessa.indexOf('%20') != -1) {
+            console.log("while")
+            let turha = /%20/
+            film_osoitteessa = film_osoitteessa.replace(turha, ' ')
+            console.log(film_osoitteessa)
+
+        }
+        elokuvan_nimi = film_osoitteessa
         console.log(elokuvan_nimi)
         return elokuvan_nimi
     }
