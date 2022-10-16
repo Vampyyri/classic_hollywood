@@ -52,19 +52,20 @@ function App() {
             
         })
     */
+    //etusivun menu
     const buttons = [
         <Button key="one" href="films" /*onClick={() => { klikattu(1) }}*/>Films</Button>,
         <Button key="two" onClick={() => { klikattu(2) }}>Persons</Button>,
         <Button key="three">Game</Button>,
     ];
 
+    // etusivun menun loppu
+
+    // saadan leffan nimen sivun osoitesta
     function leffan_nimi() {
         let film_osoitteessa = window.location.pathname.split("=")[1]
         //window.location.pathname.searchParams.get('film')
         console.log(film_osoitteessa)
-
-
-
 
         let elokuvan_nimi = 0
         while (film_osoitteessa.indexOf('%20') != -1) {
@@ -78,6 +79,10 @@ function App() {
         console.log(elokuvan_nimi)
         return elokuvan_nimi
     }
+
+    // leffan nimen saamisen loppu
+
+
 
     useEffect(() => {
         console.log("window.location.pathname: ", window.location.pathname)
