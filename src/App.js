@@ -9,6 +9,7 @@ import ImageList from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Films from './Films';
 import Film from './Film';
+import Persons from './Persons';
 import axios from 'axios'
 
 
@@ -55,7 +56,7 @@ function App() {
     //etusivun menu
     const buttons = [
         <Button key="one" href="films" /*onClick={() => { klikattu(1) }}*/>Films</Button>,
-        <Button key="two" onClick={() => { klikattu(2) }}>Persons</Button>,
+        <Button key="two" href="persons"/*onClick={() => { klikattu(2) }}*/>Persons</Button>,
         <Button key="three">Game</Button>,
     ];
 
@@ -97,6 +98,13 @@ function App() {
             //console.log("valittuLeffa: ", Films.valittuLeffa)
             //console.log("valinta: ", Films.valinta)
             setAlkutila(4)
+            console.log(window.location.pathname)
+            console.log("alkutila: ", alkutila)
+        } else if (window.location.pathname.startsWith('/persons')) {
+            console.log("film")
+            //console.log("valittuLeffa: ", Films.valittuLeffa)
+            //console.log("valinta: ", Films.valinta)
+            setAlkutila(2)
             console.log(window.location.pathname)
             console.log("alkutila: ", alkutila)
         }
@@ -151,6 +159,10 @@ function App() {
     } else if (alkutila === 4) {
         return (
             <Film leffa={leffan_nimi()} />
+        )
+    } else if (alkutila === 2) {
+        return (
+            <Persons />
         )
     }
 }
