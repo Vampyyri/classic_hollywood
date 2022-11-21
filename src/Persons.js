@@ -19,6 +19,36 @@ function Persons() {
                     let luettelo = await axios.get('http://localhost:443/films')
                     console.log(luettelo.data)
                     let persons = []
+                    for (let tiedot of luettelo.data) {
+                        //persons.push(tiedot.director.split(','))
+                        //persons.push(tiedot.writer.split(','))
+                        //persons.push(tiedot.story.split(','))
+                        console.log("tiedot: ", tiedot)
+                        console.log("tiedot.data: ", tiedot.data)
+                        console.log("tiedot.acters: ", tiedot.acters)
+                        for (let henkilö of tiedot.acters.split(',')) {
+                            if (persons.indexOf(henkilö) == -1) {
+                                persons.push(henkilö)
+                            }
+
+                        }
+                        for (let dir of tiedot.director.split(',')) {
+                            if (persons.indexOf(dir) == -1)
+                                persons.push(dir)
+                        }
+                        for (let wri of tiedot.writer.split(',')) {
+                            if (persons.indexOf(wri) == -1)
+                                persons.push(wri)
+                        }
+
+                        //persons.push(tiedot.acters.split(','))
+
+                        console.log("persons: ", persons)
+                    }
+                    /*
+                    luettelo.forEach(element => {
+                        ihmiset(element)
+                     */
 
                     // ehkä sitten forEachin kauttaa formuliin, mikä otta arvot avaimilla
 
