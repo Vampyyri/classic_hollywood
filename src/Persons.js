@@ -26,23 +26,30 @@ function Persons() {
                         console.log("tiedot: ", tiedot)
                         console.log("tiedot.data: ", tiedot.data)
                         console.log("tiedot.acters: ", tiedot.acters)
-                        for (let henkilö of tiedot.acters.split(',')) {
+                        for (let henkilö of tiedot.acters.split(', ')) {
                             if (persons.indexOf(henkilö) == -1) {
                                 persons.push(henkilö)
                             }
 
                         }
-                        for (let dir of tiedot.director.split(',')) {
+                        for (let dir of tiedot.director.split(', ')) {
                             if (persons.indexOf(dir) == -1)
                                 persons.push(dir)
                         }
-                        for (let wri of tiedot.writer.split(',')) {
+                        for (let wri of tiedot.writer.split(', ')) {
                             if (persons.indexOf(wri) == -1)
                                 persons.push(wri)
                         }
+                        if (tiedot.producer != null) {
+                            for (let pro of tiedot.producer.split(', ')) {
+                                if (persons.indexOf(pro) == -1)
+                                    persons.push(pro)
+                            }
+                        }
+
 
                         //persons.push(tiedot.acters.split(','))
-
+                        persons = persons.sort();
                         console.log("persons: ", persons)
                     }
                     /*
