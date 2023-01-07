@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ReactDOM from "react-dom";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -10,11 +11,12 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { createTheme } from '@material-ui/core/styles';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+
 //import blueGrey from '@mui/core/colors/blueGrey';
 
 export default function ButtonAppBar() {
     console.log("ButtonAppBar")
-    const [anchorEl, setAnchorEl] = React.useState /*< null | HTMLElement >*/(null);
+    const [anchorEl, setAnchorEl] = React.useState < null | HTMLElement > (null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -51,7 +53,7 @@ export default function ButtonAppBar() {
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem href="films" /*onClick={handleClose}*/>Films</MenuItem>
+                            <MenuItem onClick={window.location.assign('../films')}>Films</MenuItem>
                             <MenuItem onClick={handleClose}>Persons</MenuItem>
                             <MenuItem onClick={handleClose}>Game</MenuItem>
                         </Menu>
@@ -63,6 +65,6 @@ export default function ButtonAppBar() {
                     <Button color="inherit">Login</Button>
                 </Toolbar>
             </AppBar>
-        </Box>
+        </Box >
     );
 }
