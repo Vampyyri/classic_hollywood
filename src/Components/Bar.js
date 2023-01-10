@@ -16,14 +16,29 @@ import blueGrey from '@material-ui/core/colors/blueGrey';
 
 export default function ButtonAppBar() {
     console.log("ButtonAppBar")
-    const [anchorEl, setAnchorEl] = React.useState < null | HTMLElement > (null);
+    const [anchorEl, setAnchorEl] = React.useState /*< null | HTMLElement > */(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
+    /*
     const handleClose = () => {
         setAnchorEl(null);
     };
+    */
+    function siirto(arvo) {
+        if (arvo !== null) {
+            let osoitte = '../' + arvo
+            console.log(osoitte)
+            /*
+            window.location.assign(osoitte)
+            */
+            window.location.href = osoitte
+        }
+
+
+
+    }
     return (
         <Box sx={{ flexGrow: 1 }} maxWidth='1300px' alignItems="center" justify="center">
             <AppBar position="static" color='grey'>
@@ -48,14 +63,14 @@ export default function ButtonAppBar() {
                             id="basic-menu"
                             anchorEl={anchorEl}
                             open={open}
-                            onClose={handleClose}
+                            //onClose={handleClose}
                             MenuListProps={{
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem onClick={window.location.assign('../films')}>Films</MenuItem>
-                            <MenuItem onClick={handleClose}>Persons</MenuItem>
-                            <MenuItem onClick={handleClose}>Game</MenuItem>
+                            <MenuItem onClick={siirto('films')}>Films</MenuItem>
+                            <MenuItem onClick={siirto('persons')}>Persons</MenuItem>
+                            <MenuItem onClick={siirto('game')}>Game</MenuItem>
                         </Menu>
 
                     </IconButton>
@@ -68,3 +83,5 @@ export default function ButtonAppBar() {
         </Box >
     );
 }
+
+//window.location.assign('../films')
