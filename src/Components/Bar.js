@@ -16,24 +16,26 @@ import blueGrey from '@material-ui/core/colors/blueGrey';
 
 export default function ButtonAppBar() {
     console.log("ButtonAppBar")
-    const [anchorEl, setAnchorEl] = React.useState /*< null | HTMLElement > */(null);
+    const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
-    const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+
+    const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
-    /*
-    const handleClose = () => {
+
+
+    const handleClose = (arvo) => {
         setAnchorEl(null);
     };
-    */
+
     function siirto(arvo) {
         if (arvo !== null) {
             let osoitte = '../' + arvo
             console.log(osoitte)
-            /*
+
             window.location.assign(osoitte)
-            */
-            window.location.href = osoitte
+
+            //window.location.href = '../films'
         }
 
 
@@ -63,14 +65,15 @@ export default function ButtonAppBar() {
                             id="basic-menu"
                             anchorEl={anchorEl}
                             open={open}
-                            //onClose={handleClose}
+                            onClose={handleClose}
                             MenuListProps={{
                                 'aria-labelledby': 'basic-button',
                             }}
                         >
-                            <MenuItem onClick={siirto('films')}>Films</MenuItem>
-                            <MenuItem onClick={siirto('persons')}>Persons</MenuItem>
-                            <MenuItem onClick={siirto('game')}>Game</MenuItem>
+                            <MenuItem onClick={handleClose}>Films</MenuItem>
+                            <MenuItem onClick={handleClose}>Persons</MenuItem>
+                            <MenuItem onClick={handleClose}>Game</MenuItem>
+
                         </Menu>
 
                     </IconButton>
@@ -85,3 +88,8 @@ export default function ButtonAppBar() {
 }
 
 //window.location.assign('../films')
+/*
+                           <MenuItem onClick={siirto('films')}>Films</MenuItem>
+                           <MenuItem onClick={siirto('persons')}>Persons</MenuItem>
+                           <MenuItem onClick={siirto('game')}>Game</MenuItem>
+                           */
