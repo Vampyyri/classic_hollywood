@@ -9,6 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid';
+import axios from 'axios';
 
 
 
@@ -20,6 +21,9 @@ function Film(p) {
     console.log("ollan Filmessa")
     console.log("props: ", p)
     console.log("props leffa: ", p.leffa.name)
+    console.log("p.leffa.date: ", p.leffa.date)
+
+    //const [leffa, setLeffa] = useState()
 
     function kuva(nimi) {
         console.log("nimi: ", nimi)
@@ -28,7 +32,22 @@ function Film(p) {
         console.log("poster: ", poster)
         return poster;
     }
+    const name = p.leffa
+    const elokuva = async () => {
+        try {
+            console.log("Ku-ku")
+            let film_tiedot = await axios.get('http://localhost:443/film', { leffa: name })
+            console.log(film_tiedot)
+            //setLeffa(films_luettelo.data)
+            //setDataNoudettu(true)
 
+            //console.log("i.name: ", i.name)
+
+        } catch (err) {
+            console.log(err)
+        }
+    }
+    elokuva()
 
     return (
         <div>
@@ -40,12 +59,26 @@ function Film(p) {
 
                 <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
                     <Grid item xs={8}>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={1}>
                             <Grid item xs={9}>
                                 <Item style={{
                                     fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
                                 }}>{p.leffa}</Item>
                             </Grid>
+                            {(p.leffa.date) &&
+                                <Grid item xs={4}>
+                                    <Item style={{
+                                        fontWeight: 'bold'
+                                    }}>Date: </Item>
+                                </Grid>
+                            }
+                            {(p.leffa.date) &&
+                                <Grid item xs={4}>
+                                    <Item style={{
+                                        fontWeight: 'normal'
+                                    }}>{p.leffa.date}</Item>
+                                </Grid>
+                            }
 
                         </Grid>
                     </Grid>
