@@ -32,24 +32,29 @@ function Film(p) {
 
     return (
         <div>
-            <ButtonAppBar />
-            <br></br>
+            <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
+                <ButtonAppBar />
+                <br></br>
+                <br></br>
 
 
-            <Grid container spacing={2}>
-                <Grid item xs={8}>
-                    <Item>p.leffa</Item>
+                <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
+                    <Grid item xs={8}>
+                        <Grid container spacing={2}>
+                            <Grid item xs={9}>
+                                <Item style={{
+                                    fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
+                                }}>{p.leffa}</Item>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <Item><img class='sponsor' src={kuva(p.leffa)}></img></Item>
+                    </Grid>
+
                 </Grid>
-                <Grid item xs={4}>
-                    <Item><img class='sponsor' src={kuva(p.leffa)}></img></Item>
-                </Grid>
-                <Grid item xs={4}>
-                    <Item>xs=4</Item>
-                </Grid>
-                <Grid item xs={8}>
-                    <Item>xs=8</Item>
-                </Grid>
-            </Grid>
+            </Box>
         </div>
     )
     return (
