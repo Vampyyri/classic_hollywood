@@ -23,7 +23,7 @@ function Film(p) {
     console.log("props leffa: ", p.leffa.name)
     console.log("p.leffa.date: ", p.leffa.date)
 
-    //const [leffa, setLeffa] = useState()
+    const [leffa, setLeffa] = useState()
 
     function kuva(nimi) {
         console.log("nimi: ", nimi)
@@ -35,10 +35,14 @@ function Film(p) {
     const name = p.leffa
     const elokuva = async () => {
         try {
-            console.log("Ku-ku")
-            let film_tiedot = await axios.get('http://localhost:443/film', { leffa: name })
-            console.log(film_tiedot)
-            //setLeffa(films_luettelo.data)
+            console.log("name: ", name)
+            let film_tiedot = await axios.get('http://localhost:443/film', {
+                headers: {
+                    nimikke: name
+                }
+            })
+            console.log(film_tiedot.data)
+            setLeffa(film_tiedot.data)
             //setDataNoudettu(true)
 
             //console.log("i.name: ", i.name)
@@ -48,6 +52,16 @@ function Film(p) {
         }
     }
     elokuva()
+    console.log(elokuva())
+
+    function premiera(aika) {
+        let päivä = aika.slice(8, 10)
+        let kuukausi = aika.slice(5, 7)
+        let vuosi = aika.slice(0, 4)
+        let päivämäärä = päivä + '.' + kuukausi + '.' + vuosi
+        console.log(päivämäärä)
+        return päivämäärä;
+    }
 
     return (
         <div>
@@ -76,7 +90,7 @@ function Film(p) {
                                 <Grid item xs={4}>
                                     <Item style={{
                                         fontWeight: 'normal'
-                                    }}>{p.leffa.date}</Item>
+                                    }}>{premiera(leffa.date)}</Item>
                                 </Grid>
                             }
 
