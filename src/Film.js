@@ -20,10 +20,43 @@ function Film(p) {
 
     console.log("ollan Filmessa")
     console.log("props: ", p)
-    console.log("props leffa: ", p.leffa.name)
-    console.log("p.leffa.date: ", p.leffa.date)
+    console.log("props leffa: ", p.leffa)
 
-    const [leffa, setLeffa] = useState()
+
+    const [leffa, setLeffa] = useState();
+    const [dataNoudettu, setDataNoudettu] = useState(false);
+
+    const name = p.leffa
+
+    useEffect(() => {
+        console.log("useEffect")
+        if (!dataNoudettu) {
+            const elokuva = async () => {
+                try {
+                    console.log("name: ", name)
+                    let film_tiedot = await axios.get('http://localhost:443/film', {
+                        headers: {
+                            nimikke: name
+                        }
+                    })
+                    console.log(film_tiedot.data)
+                    let film_tiedot_ = film_tiedot.data[0]
+                    setLeffa(film_tiedot_)
+                    setDataNoudettu(true)
+
+                    //console.log("i.name: ", i.name)
+
+                } catch (err) {
+                    console.log(err)
+                }
+            }
+            elokuva()
+            console.log(elokuva())
+        }
+    })
+
+    console.log("leffa: ", leffa)
+    console.log("dataNoudettu: ", dataNoudettu)
 
     function kuva(nimi) {
         console.log("nimi: ", nimi)
@@ -32,27 +65,12 @@ function Film(p) {
         console.log("poster: ", poster)
         return poster;
     }
-    const name = p.leffa
-    const elokuva = async () => {
-        try {
-            console.log("name: ", name)
-            let film_tiedot = await axios.get('http://localhost:443/film', {
-                headers: {
-                    nimikke: name
-                }
-            })
-            console.log(film_tiedot.data)
-            setLeffa(film_tiedot.data)
-            //setDataNoudettu(true)
 
-            //console.log("i.name: ", i.name)
+    console.log("name: ", name)
 
-        } catch (err) {
-            console.log(err)
-        }
-    }
-    elokuva()
-    console.log(elokuva())
+
+
+
 
     function premiera(aika) {
         let päivä = aika.slice(8, 10)
@@ -74,19 +92,19 @@ function Film(p) {
                 <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
                     <Grid item xs={8}>
                         <Grid container spacing={1}>
-                            <Grid item xs={9}>
+                            <Grid item xs={8}>
                                 <Item style={{
                                     fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
-                                }}>{p.leffa}</Item>
+                                }}>{name}</Item>
                             </Grid>
-                            {(p.leffa.date) &&
+                            {(leffa.date) &&
                                 <Grid item xs={4}>
                                     <Item style={{
                                         fontWeight: 'bold'
                                     }}>Date: </Item>
                                 </Grid>
                             }
-                            {(p.leffa.date) &&
+                            {(leffa.date) &&
                                 <Grid item xs={4}>
                                     <Item style={{
                                         fontWeight: 'normal'
