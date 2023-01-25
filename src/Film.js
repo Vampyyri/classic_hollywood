@@ -29,7 +29,6 @@ function Film(p) {
     const name = p.leffa
 
     useEffect(() => {
-        console.log("useEffect")
         if (!dataNoudettu) {
             const elokuva = async () => {
                 try {
@@ -43,7 +42,7 @@ function Film(p) {
                     let film_tiedot_ = film_tiedot.data[0]
                     setLeffa(film_tiedot_)
                     setDataNoudettu(true)
-
+                    console.log(film_tiedot_)
                     //console.log("i.name: ", i.name)
 
                 } catch (err) {
@@ -52,11 +51,14 @@ function Film(p) {
             }
             elokuva()
             console.log(elokuva())
+            console.log("leffa: ", leffa)
+            console.log("dataNoudettu: ", dataNoudettu)
         }
     })
 
-    console.log("leffa: ", leffa)
-    console.log("dataNoudettu: ", dataNoudettu)
+
+
+
 
     function kuva(nimi) {
         console.log("nimi: ", nimi)
@@ -82,53 +84,50 @@ function Film(p) {
     }
 
     return (
-        <div>
-            <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
-                <ButtonAppBar />
-                <br></br>
-                <br></br>
+        <div>{(leffa) &&
+            <div>
+
+                <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
+                    <ButtonAppBar />
+                    <br></br>
+                    <br></br>
 
 
-                <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
-                    <Grid item xs={8}>
-                        <Grid container spacing={1}>
-                            <Grid item xs={8}>
-                                <Item style={{
-                                    fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
-                                }}>{name}</Item>
+                    <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
+                        <Grid item xs={8}>
+                            <Grid container spacing={1}>
+                                <Grid item xs={9}>
+                                    <Item style={{
+                                        fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
+                                    }}>{name}</Item>
+                                </Grid>
+                                {(leffa.date) &&
+                                    <Grid item xs={4}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Date: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.date) &&
+                                    <Grid item xs={4}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{premiera(leffa.date)}</Item>
+                                    </Grid>
+                                }
+
                             </Grid>
-                            {(leffa.date) &&
-                                <Grid item xs={4}>
-                                    <Item style={{
-                                        fontWeight: 'bold'
-                                    }}>Date: </Item>
-                                </Grid>
-                            }
-                            {(leffa.date) &&
-                                <Grid item xs={4}>
-                                    <Item style={{
-                                        fontWeight: 'normal'
-                                    }}>{premiera(leffa.date)}</Item>
-                                </Grid>
-                            }
-
                         </Grid>
+                        <Grid item xs={4}>
+                            <Item><img class='sponsor' src={kuva(p.leffa)}></img></Item>
+                        </Grid>
+
                     </Grid>
-                    <Grid item xs={4}>
-                        <Item><img class='sponsor' src={kuva(p.leffa)}></img></Item>
-                    </Grid>
-
-                </Grid>
-            </Box>
-        </div>
+                </Box>
+            </div>
+        }</div>
     )
-    return (
 
-
-
-        <div>{p.leffa}</div>
-
-    )
 }
 
 
