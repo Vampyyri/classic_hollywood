@@ -93,32 +93,207 @@ function Film(p) {
                     <br></br>
 
 
-                    <Grid container spacing={2} style={{ marginLeft: '1vh' }} maxWidth='1300px'>
+                    <Grid container spacing={2} style={{ marginLeft: '4vh' }} maxWidth='1300px'>
                         <Grid item xs={8}>
                             <Grid container spacing={1}>
-                                <Grid item xs={9}>
+                                <Grid item xs={12}>
                                     <Item style={{
-                                        fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic'
+                                        fontWeight: 'bold', fontSize: '300% ', fontStyle: 'italic', marginBottom: '3vh'
                                     }}>{name}</Item>
                                 </Grid>
                                 {(leffa.date) &&
-                                    <Grid item xs={4}>
+                                    <Grid item xs={3}>
                                         <Item style={{
                                             fontWeight: 'bold'
                                         }}>Date: </Item>
                                     </Grid>
                                 }
                                 {(leffa.date) &&
-                                    <Grid item xs={4}>
+                                    <Grid item xs={9}>
                                         <Item style={{
                                             fontWeight: 'normal'
                                         }}>{premiera(leffa.date)}</Item>
                                     </Grid>
                                 }
+                                {(leffa.genre) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Genre: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.genre) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.genre}</Item>
+                                    </Grid>
+                                }
+
+                                {(leffa.director) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Director: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.director) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.director}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.writer) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Writer: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.writer) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.writer}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.story) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Story: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.story) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.story}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.based) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Based: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.based) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.based}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.producer) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Producer: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.producer) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.producer}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.music) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Music: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.music) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.music}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.running_time) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Running time: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.running_time) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.running_time}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.cinematography) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Cinematography: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.cinematography) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.cinematography}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.editor) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Editor: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.editor) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.editor}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.company) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Company: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.company) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.company}</Item>
+                                    </Grid>
+                                }
+                                {(leffa.distributor) &&
+                                    <Grid item xs={3}>
+                                        <Item style={{
+                                            fontWeight: 'bold'
+                                        }}>Distributor: </Item>
+                                    </Grid>
+                                }
+                                {(leffa.distributor) &&
+                                    <Grid item xs={9}>
+                                        <Item style={{
+                                            fontWeight: 'normal'
+                                        }}>{leffa.distributor}</Item>
+                                    </Grid>
+                                }
+
+
+
+
+
+
 
                             </Grid>
                         </Grid>
-                        <Grid item xs={4}>
+                        <Grid item xs={4} marginTop='9vh'>
                             <Item><img class='sponsor' src={kuva(p.leffa)}></img></Item>
                         </Grid>
 
