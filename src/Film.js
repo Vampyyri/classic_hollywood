@@ -9,6 +9,9 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Grid from '@mui/material/Grid';
 import Item from '@mui/material/Grid';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 import axios from 'axios';
 
 
@@ -25,6 +28,7 @@ function Film(p) {
 
     const [leffa, setLeffa] = useState();
     const [dataNoudettu, setDataNoudettu] = useState(false);
+    const [kuvat, setKuvat] = useState();
 
     const name = p.leffa
 
@@ -41,9 +45,10 @@ function Film(p) {
                     console.log(film_tiedot.data)
                     let film_tiedot_ = film_tiedot.data[0]
                     setLeffa(film_tiedot_)
+                    setKuvat(film_tiedot_.acters)
                     setDataNoudettu(true)
                     console.log(film_tiedot_)
-                    //console.log("i.name: ", i.name)
+                    console.log("kuvat: ", kuvat)
 
                 } catch (err) {
                     console.log(err)
@@ -68,6 +73,17 @@ function Film(p) {
         return poster;
     }
 
+    function acter_kuva(nimi) {
+        console.log("nimi: ", nimi)
+        let acter = nimi.split(' ').join('_')
+        let portret = '/img/AA/Acters' + acter + '.jpg'
+        if (portret === null) {
+            let poster = '/img/AA/Actress' + acter + '.jpg'
+        }
+        console.log("portret: ", portret)
+        return portret;
+    }
+
     console.log("name: ", name)
 
 
@@ -82,6 +98,20 @@ function Film(p) {
         console.log(päivämäärä)
         return päivämäärä;
     }
+
+    const itemData = []
+    function acters_lista() {
+        kuvat.forEach(element => {
+
+            let img = acter_kuva(element);
+            let title = element;
+            setItemData.push()
+
+        })
+    }
+
+
+
 
     return (
         <div>{(leffa) &&
@@ -285,12 +315,6 @@ function Film(p) {
                                     </Grid>
                                 }
 
-
-
-
-
-
-
                             </Grid>
                         </Grid>
                         <Grid item xs={4} marginTop='9vh'>
@@ -298,6 +322,24 @@ function Film(p) {
                         </Grid>
 
                     </Grid>
+                    <br></br>
+                    <ImageList sx={{ width: 500, height: 450 }}>
+                        {itemData.map((item) => (
+                            <ImageListItem key={item.img}>
+                                <img
+                                    src={`${item.img}?w=248&fit=crop&auto=format`}
+                                    srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                                    alt={item.title}
+                                    loading="lazy"
+                                />
+                                <ImageListItemBar
+                                    title={item.title}
+                                    subtitle={<span>by: {item.author}</span>}
+                                    position="below"
+                                />
+                            </ImageListItem>
+                        ))}
+                    </ImageList>
                 </Box>
             </div>
         }</div>
