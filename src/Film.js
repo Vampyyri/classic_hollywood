@@ -29,6 +29,7 @@ function Film(p) {
     const [leffa, setLeffa] = useState();
     const [dataNoudettu, setDataNoudettu] = useState(false);
     const [kuvat, setKuvat] = useState();
+    const [itemData, setItemData] = useState([]);
 
     const name = p.leffa
 
@@ -45,9 +46,12 @@ function Film(p) {
                     console.log(film_tiedot.data)
                     let film_tiedot_ = film_tiedot.data[0]
                     setLeffa(film_tiedot_)
-                    setKuvat(film_tiedot_.acters)
+                    let acters_lista = film_tiedot_.acters.split(', ')
+                    setKuvat(acters_lista)
                     setDataNoudettu(true)
                     console.log(film_tiedot_)
+                    console.log("film_tiedot_.acters: ", film_tiedot_.acters)
+                    console.log("acters_lista: ", acters_lista)
                     console.log("kuvat: ", kuvat)
 
                 } catch (err) {
@@ -99,13 +103,14 @@ function Film(p) {
         return päivämäärä;
     }
 
-    const itemData = []
-    function acters_lista() {
+
+    function acters_kuva_lista() {
+
         kuvat.forEach(element => {
 
             let img = acter_kuva(element);
             let title = element;
-            setItemData.push()
+            setItemData.push({ img: img, title: title })
 
         })
     }
