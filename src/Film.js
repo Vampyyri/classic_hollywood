@@ -28,8 +28,10 @@ function Film(p) {
 
     const [leffa, setLeffa] = useState();
     const [dataNoudettu, setDataNoudettu] = useState(false);
-    const [kuvat, setKuvat] = useState();
+    const [kuvat, setKuvat] = useState([]);
     const [itemData, setItemData] = useState([]);
+
+    console.log("dataNoudettu: ", dataNoudettu)
 
     const name = p.leffa
 
@@ -46,23 +48,27 @@ function Film(p) {
                     console.log(film_tiedot.data)
                     let film_tiedot_ = film_tiedot.data[0]
                     setLeffa(film_tiedot_)
-                    let acters_lista = film_tiedot_.acters.split(', ')
-                    setKuvat(acters_lista)
+                    let actersLista = film_tiedot_.acters.split(', ')
+                    setKuvat(actersLista)
                     setDataNoudettu(true)
                     console.log(film_tiedot_)
                     console.log("film_tiedot_.acters: ", film_tiedot_.acters)
-                    console.log("acters_lista: ", acters_lista)
+                    console.log("actersLista: ", actersLista)
                     console.log("kuvat: ", kuvat)
 
                 } catch (err) {
                     console.log(err)
                 }
+
+
             }
             elokuva()
             console.log(elokuva())
             console.log("leffa: ", leffa)
             console.log("dataNoudettu: ", dataNoudettu)
+            console.log("kuvat: ", kuvat)
         }
+        //acters_kuva_lista()
     })
 
 
