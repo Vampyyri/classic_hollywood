@@ -1,4 +1,7 @@
 import React, { useState, useEffect, Component } from 'react';
+import ButtonAppBar from './Components/Bar.js';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
 import axios from 'axios';
 
 
@@ -79,8 +82,10 @@ function Persons() {
 
     return (
 
-        <div>A</div>
-
+        <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
+            <ButtonAppBar />
+            <div>A</div>
+        </Box>
     )
 
 
