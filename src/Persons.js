@@ -3,12 +3,16 @@ import ButtonAppBar from './Components/Bar.js';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import axios from 'axios';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 
 
 function Persons() {
 
     const [dataNoudettu, setDataNoudettu] = useState(false);
+    const [personal, setPersonal] = useState([])
 
     console.log("Oomme Persons:saa")
 
@@ -54,6 +58,9 @@ function Persons() {
                         //persons.push(tiedot.acters.split(','))
                         persons = persons.sort();
                         console.log("persons: ", persons)
+                        setPersonal(persons)
+                        console.log("personal: ", personal)
+                        setDataNoudettu(true)
                     }
                     /*
                     luettelo.forEach(element => {
@@ -77,14 +84,16 @@ function Persons() {
 
 
         }
+        console.log("personal: ", personal)
 
     })
+
 
     return (
 
         <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
             <ButtonAppBar />
-            <div>A</div>
+            <div>{personal}</div>
         </Box>
     )
 
