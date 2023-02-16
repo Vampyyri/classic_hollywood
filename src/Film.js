@@ -49,8 +49,13 @@ function Film(p) {
                     let film_tiedot_ = film_tiedot.data[0]
                     setLeffa(film_tiedot_)
                     let actersLista = film_tiedot_.acters.split(', ')
-                    setKuvat(actersLista)
-                    setDataNoudettu(true)
+                    for (let artist of actersLista) {
+                        let artist_kuva = artist.split(' ').join('_')
+                        let artist_kuva_ = '/img/' + artist_kuva + '.jpg'
+                        setKuvat.push({ img: artist_kuva_, title: artist })
+                    }
+
+
                     console.log(film_tiedot_)
                     console.log("film_tiedot_.acters: ", film_tiedot_.acters)
                     console.log("actersLista: ", actersLista)
@@ -59,8 +64,8 @@ function Film(p) {
                 } catch (err) {
                     console.log(err)
                 }
-
-
+                console.log("kuvat: ", kuvat)
+                setDataNoudettu(true)
             }
             elokuva()
             console.log(elokuva())
@@ -132,6 +137,7 @@ function Film(p) {
                     <ButtonAppBar />
                     <br></br>
                     <br></br>
+
 
 
                     <Grid container spacing={2} style={{ marginLeft: '4vh' }} maxWidth='1300px'>
@@ -335,7 +341,7 @@ function Film(p) {
                     </Grid>
                     <br></br>
                     <ImageList sx={{ width: 500, height: 450 }}>
-                        {itemData.map((item) => (
+                        {kuvat.map((item) => (
                             <ImageListItem key={item.img}>
                                 <img
                                     src={`${item.img}?w=248&fit=crop&auto=format`}
