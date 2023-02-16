@@ -7,6 +7,7 @@ import Paper from '@mui/material/Paper';
 //import Grid from '@mui/material/Unstable_Grid2';
 import Grid from '@mui/material/Grid'; // Grid version 1
 import Film from './Film';
+import ButtonAppBar from './Components/Bar.js';
 /*
 import { styled } from '@mui/material/styles';
 import ButtonBase from '@mui/material/ButtonBase';
@@ -95,9 +96,12 @@ function Films() {
     return (
 
         <div>
-            <div>{(dataNoudettu == true) && (valittuLeffa === undefined) && <div style={{ marginTop: '1vh' }}>{leffat.map((i, index) =>
+            <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
+                <ButtonAppBar />
+                <div>{(dataNoudettu == true) && (valittuLeffa === undefined) && <div style={{ marginTop: '3vh' }}>{leffat.map((i, index) =>
 
-                <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
+
+
                     <Grid container spacing={4} marginTop='1vh'>
                         <Grid item xs={2}>
                             <Item><Button key="film" onClick={() => { valinta(i.name) }} ><img class='sponsor' src={kuvan_etsiminen(i.name)} /></Button></Item>
@@ -113,14 +117,15 @@ function Films() {
                         </Grid>
                     </Grid>
 
-                </Box>
 
 
 
 
-            )}</div>}</div>
+
+                )}</div>}</div>
+            </Box>
             {(valittuLeffa !== undefined) && <Film leffa={valittuLeffa} />}
-        </div>
+        </div >
     )
 
 }
