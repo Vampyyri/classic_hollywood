@@ -15,6 +15,7 @@ function Persons() {
     const [personal, setPersonal] = useState([])
 
     console.log("Oomme Persons:saa")
+    let persons = []
 
     useEffect(() => {
         console.log(dataNoudettu)
@@ -25,7 +26,7 @@ function Persons() {
                     console.log("henkilot try")
                     let luettelo = await axios.get('http://localhost:443/films')
                     console.log(luettelo.data)
-                    let persons = []
+                    //let persons = []
                     for (let tiedot of luettelo.data) {
                         //persons.push(tiedot.director.split(','))
                         //persons.push(tiedot.writer.split(','))
@@ -82,18 +83,47 @@ function Persons() {
             }
             henkilot()
 
+            //const Acter_and_photo = 
+
 
         }
-        console.log("personal: ", personal)
+
 
     })
+
+    console.log("personal: ", personal)
+    function portret(name) {
+        console.log("Olemme portretissa ")
+        const jpgname = name.split(' ').join('_')
+        const way = '/img/AA/Acters/' + jpgname + '.jpg'
+        if (way === null) {
+            way = '/img/AA/Actress/' + jpgname + '.jpg'
+        }
+        console.log("way: ", way)
+        return way;
+    }
 
 
     return (
 
         <Box container sx={{ flexGrow: 1 }} marginTop='7vh' maxWidth='1300px' margin='auto' alignItems="center" justify="center">
-            <ButtonAppBar />
-            <div>{personal}</div>
+
+            <ImageList sx={{ width: 1300, height: 900 }}>
+                <div>{(dataNoudettu == true) && <div>{personal.map((item) => (
+                    <ImageListItem key={item}>
+                        <img
+                            src={`${portret(item)}?w=248&fit=crop&auto=format`}
+                            srcSet={`${portret(item)}?w=248&fit=crop&auto=format&dpr=2 2x`}
+
+                            loading="lazy"
+                        />
+                        <ImageListItemBar
+                            title={item}
+                            position="below"
+                        />
+                    </ImageListItem>
+                ))}</div>}</div>
+            </ImageList>
         </Box>
     )
 
